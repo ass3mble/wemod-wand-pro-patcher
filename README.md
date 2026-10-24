@@ -9,8 +9,8 @@ An automated patcher for WeMod focused on reverse-engineering, local compatibili
 - **Backup System:** Safely backs up your original `app.asar` before making any changes.
 
 ## ⚙️ Requirements
-- [Node.js](https://nodejs.org/) — required for `npx asar` extraction and repacking.
-- Python 3.x — if running from source.
+- [Node.js](https://nodejs.org/) - required for `npx asar` extraction and repacking.
+- Python 3.x - if running from source.
 
 ## 🛠 Usage
 1. Close WeMod completely from the system tray.
