@@ -1,28 +1,46 @@
-﻿# WeMod Auto Patcher
+# WeMod (Wand) Patcher
 
-An automated patcher for WeMod focused on reverse-engineering, local compatibility testing, and Electron/ASAR research.
+A Windows utility for examining how a local WeMod installation can be modified and repackaged. The project focuses on Electron application archives, local compatibility experiments, and reverse-engineering research.
 
-## 🚀 Features
-- **Auto-Detect:** Automatically locates your latest WeMod installation (`app-*`).
-- **Resilient Patching:** Applies a local wrapper around selected internal request/error-handling logic for research and compatibility testing.
-- **Auto-Repack:** Extracts `app.asar`, applies the patch, and repacks it seamlessly using `asar`.
-- **Backup System:** Safely backs up your original `app.asar` before making any changes.
+**What is available here:** This repository currently contains the compiled `Wemod(Wand)_Patcher.exe`, a short guide, and a Git ignore file. The patcher's source code is not included. Its internal behavior cannot be independently verified from this repository alone.
 
-## ⚙️ Requirements
-- [Node.js](https://nodejs.org/) - required for `npx asar` extraction and repacking.
-- Python 3.x - if running from source.
+## What the tool is intended to do
 
-## 🛠 Usage
-1. Close WeMod completely from the system tray.
-2. Run `Wemod(Wand)_Patcher.exe` (or the source version, if available).
-3. Wait for the extraction, patching, and repacking process to finish.
-4. Open WeMod and verify the modified behavior in your local test environment.
+According to the project's original documentation, the executable is designed to:
 
-## 📝 How it works
-WeMod is built as an Electron application, with much of its application logic packaged inside `app.asar`. This tool automates the process of locating the installed app, backing up the original archive, extracting it, modifying selected internal JavaScript logic, and repacking the archive.
+- Find an installed WeMod application directory.
+- Back up its `app.asar` archive before making changes.
+- Extract the Electron archive and apply local changes to selected application logic.
+- Repackage the archive for local testing.
 
-The project is intended to demonstrate how Electron applications can be inspected and modified for debugging, interoperability, compatibility testing, and reverse-engineering research.
+These are documented design goals, not a guarantee that every version of WeMod is supported.
 
----
+## Before you start
 
-*Disclaimer: This tool is for educational, interoperability, and reverse-engineering research only. Use it only on software you are authorized to inspect or modify, and respect applicable licenses, terms of service, and access controls.*
+- Use a Windows machine and an installation you are authorized to inspect.
+- Close WeMod fully, including its background process.
+- Make your own copy of the original `app.asar` and keep it outside the installation folder.
+- Review the executable's origin and scan it with your security software.
+- Be aware that application updates may overwrite the modified archive or make the patch incompatible.
+- Node.js may be needed for archive operations, depending on how the executable was packaged.
+
+## Running the packaged utility
+
+1. Download `Wemod(Wand)_Patcher.exe` from this repository.
+2. Verify that WeMod is closed and your original archive is backed up.
+3. Run the utility only in a local test environment where you have permission to modify the application.
+4. Check the result. If anything behaves unexpectedly, close WeMod and restore your original `app.asar`.
+
+There is no source-based build procedure in this repository because the source files have not been published here.
+
+## What is an ASAR archive?
+
+Electron desktop applications often store JavaScript, HTML, and related files in a single `app.asar` archive. Researchers can unpack that archive to inspect how an application is structured, then repack it after making local changes.
+
+Changing those files can break startup, updates, or other application behavior. Treat the archive backup as essential.
+
+## Scope and limitations
+
+This is an independent research project, not an official WeMod release. It is not affiliated with or endorsed by WeMod. There is no public compatibility matrix, reproducible build, or automated test suite in this repository. No claim is made that the executable works with the latest application version.
+
+Only inspect or modify software when you have authorization. Respect applicable licenses, service terms, and access controls. Do not use this utility to gain unauthorized access to paid features or services.
